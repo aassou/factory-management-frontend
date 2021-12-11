@@ -1,6 +1,6 @@
 # Factory Management: Frontend
 
-This is a React project, designed to manage small industrial factories by consuming and providing data and business login through the API.
+This is a React project, designed to manage small industrial factories by consuming and providing data and business logic through the API.
 
 
 ## Requirements
