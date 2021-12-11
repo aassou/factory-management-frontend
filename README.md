@@ -1,6 +1,6 @@
-# ImmoERP Migration: Frontend
+# Factory Management: Frontend
 
-This is a Symfony / React project, where we are working on transforming an existing project build with legacy code (PHP) to a modern web application using Symfony 5.3 and React 17.0.2.
+This is a React project, designed to manage small industrial factories by consuming and providing data and business login through the API.
 
 
 ## Requirements
