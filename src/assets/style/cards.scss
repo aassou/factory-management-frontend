@@ -1,0 +1,236 @@
+.linkcard {
+    position: relative;
+    border-radius: 5px;
+    color: white;
+    height: 100%;
+    .card-icon {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: black;
+        padding: 20px;
+        font-size: 34px;
+        border-radius: 5px;
+        display: block;
+        background-color: white;
+
+    }
+
+    div {
+        padding:10px 5px 10px 100px;
+
+        h1 {
+            margin: 0;
+            line-height: 1rem;
+             font-size: 20px;
+        }
+        p {
+            padding-top: 10px;
+        }
+    }
+}
+
+.n-blue-card {
+    background: rgb(39,208,255);
+    color: rgb(54, 50, 50);
+}
+.blue-card {
+    background: rgb(39,208,255);
+    background: radial-gradient(circle, rgba(39,208,255,1) 0%, rgba(40,248,164,0.9654062308517157) 100%);
+    color: rgb(54, 50, 50);
+}
+
+.darkblue-card {
+    background: rgb(39,172,255);
+    background: radial-gradient(circle, rgba(39,172,255,1) 0%, rgba(40,158,248,0.9654062308517157) 100%);
+}
+
+/* clrs.cc */
+.navy-card {
+    background: #001f3f;
+    color: white;
+}
+.blue-card {
+    background: #0074D9;
+    color: white;
+}
+.aqua-card {
+    background: #7FDBFF;
+    color: white;
+}
+.teal-card {
+    background: #39CCCC;
+    color: white;
+}
+.purple-card {
+    background: #B10DC9;
+    color: white;
+}
+.fuchsia-card {
+    background: #F012BE;
+    color: white;
+}
+.maroon-card {
+    background: #85144b;
+    color: white;
+}
+.red-card {
+    background: #FF4136;
+    color: white;
+}.orange-card {
+    background: #FF851B;
+    color: white;
+}
+.yellow-card {
+    background: #FFDC00;
+    color: white;
+}
+.olive-card {
+    background: #3D9970;
+    color: white;
+}
+.green-card {
+    background: #2ECC40;
+    color: white;
+}
+.lime-card {
+    background: #01FF70;
+    color: white;
+}
+.black-card {
+    background: #111111;
+    color: white;
+}
+.gray-card {
+    background: #AAAAAA;
+    color: white;
+}
+.silver-card {
+    background: #DDDDDD;
+    color: white;
+}
+.white-card {
+    background: #FFFFFF;
+    color: white;
+}
+/* clrs.cc */
+
+.pink-card {
+    background: rgb(250,81,165);
+    background: radial-gradient(circle, rgba(250,81,165,1) 0%, rgba(255,1,230,0.9654062308517157) 100%);
+}
+
+.pink-two-card {
+    background: rgb(250,81,230);
+    background: radial-gradient(circle, rgba(250,81,230,1) 0%, rgba(255,141,240,0.9654062308517157) 100%);
+}
+
+.lightred-card {
+    background: rgb(255,49,49);
+    background: radial-gradient(circle, rgba(255,49,49,1) 0%, rgba(252,83,83,0.9654062308517157) 100%);
+}
+
+// .red-card {
+//     background: rgb(245,0,0);
+//     background: radial-gradient(circle, rgba(245,0,0,1) 0%, rgba(247,53,53,0.9654062308517157) 100%);
+// }
+// .orange-card {
+//     background: rgb(255,118,30);
+//     background: radial-gradient(circle, rgba(255,118,30,1) 0%, rgba(255,160,0,0.9654062308517157) 100%);
+// }
+// .orange-two-card {
+//     background: rgb(222,93,11);
+//     background: radial-gradient(circle, rgba(222,93,11,0.9457983877144608) 0%, rgba(244,169,44,0.9654062308517157) 100%);
+// }
+
+/* new card colors */
+.bg-c-blue {
+    background: -webkit-gradient(linear, left top, right top, from(#01a9ac), to(#01dbdf));
+    background: linear-gradient(to right, #01a9ac, #01dbdf)
+}
+
+.bg-simple-c-blue {
+    background: #01a9ac
+}
+
+.text-c-blue {
+    color: #01a9ac
+}
+
+.bg-c-pink {
+    background: -webkit-gradient(linear, left top, right top, from(#fe5d70), to(#fe909d));
+    background: linear-gradient(to right, #fe5d70, #fe909d)
+}
+
+.bg-simple-c-pink {
+    background: #fe5d70
+}
+
+.text-c-pink {
+    color: #fe5d70
+}
+
+.bg-c-green {
+    background: -webkit-gradient(linear, left top, right top, from(#0ac282), to(#0df3a3));
+    background: linear-gradient(to right, #0ac282, #0df3a3)
+}
+
+.bg-simple-c-green {
+    background: #0ac282
+}
+
+.text-c-green {
+    color: #0ac282
+}
+
+.bg-c-yellow {
+    background: -webkit-gradient(linear, left top, right top, from(#fe9365), to(#feb798));
+    background: linear-gradient(to right, #fe9365, #feb798)
+}
+
+.bg-simple-c-yellow {
+    background: #fe9365
+}
+
+.text-c-yellow {
+    color: #fe9365
+}
+
+.bg-c-orenge {
+    background: -webkit-gradient(linear, left top, right top, from(#FE8A7D), to(#feb8b0));
+    background: linear-gradient(to right, #FE8A7D, #feb8b0)
+}
+
+.bg-simple-c-orenge {
+    background: #FE8A7D
+}
+
+.text-c-orenge {
+    color: #FE8A7D
+}
+
+.bg-c-lite-green {
+    background: -webkit-gradient(linear, left top, right top, from(#01a9ac), to(#01dbdf));
+    background: linear-gradient(to right, #01a9ac, #01dbdf)
+}
+
+.bg-simple-c-lite-green {
+    background: #01a9ac
+}
+
+.text-c-lite-green {
+    color: #01a9ac
+}
+
+.bg-googleplus {
+    background-color: #C73E2E
+}
+
+.bg-instagram {
+    background-color: #AA7C62
+}
+
+.bg-viber {
+    background-color: #7B519D
+}

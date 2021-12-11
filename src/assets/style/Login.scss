@@ -1,0 +1,20 @@
+@import "./general.scss";
+
+.login-page {
+    background: url("../images/auth/bg.jpg") no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+
+    form {
+        width:450px;
+
+        input {
+            width: 100%;
+        }
+
+
+    }
+}
+

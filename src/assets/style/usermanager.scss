@@ -1,0 +1,17 @@
+@import './colors.scss';
+
+.mytable {
+    background-color: white;
+    table {
+        width: 100%;
+    }
+    tr:nth-child(even) {
+        background-color: whitesmoke;
+    }
+
+    th,td {
+        border-right: 2px solid whitesmoke;
+        padding:5px;
+    }
+
+}

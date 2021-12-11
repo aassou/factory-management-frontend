@@ -1,0 +1,51 @@
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import { getAllProviders } from '../../../functions/Api';
+import Card from './Card';
+
+const ProvidersPage = () => {
+  const [providers, setProviders] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    getAllProviders(token).then((res) => {
+      setProviders(res.data);
+    }).catch((err) => {
+      // redirect to 404 later
+      console.log(err);
+    });
+  }, []);
+
+  const RenderHelper = (providers) => {
+    if (providers) {
+      const res = providers.map((provider) => (<Card key={provider.id} provider={provider} />));
+      return res;
+    }
+  };
+  return (
+    <div className="mytable">
+      <div className="text-end bg-light">
+        <Link className="btn bg-light-blue text-white m-4" to="/providers/create">Ajouter Un Fournisseur</Link>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Adresse</th>
+            <th>Tel1</th>
+            <th>Tel2</th>
+            <th>Fax</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {RenderHelper(providers)}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default ProvidersPage;
