@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import Form from './Form';
-import { AddProvider, getProvider, UpdateProvider } from '../../../functions/Api';
+import { addProvider, getProvider, updateProvider } from '../../../functions/ProviderApi';
 
 const Action = (props) => {
   const [provider, setProvider] = useState(null);
   useEffect(() => {
     if (props.match.params.id) {
-      getProvider(localStorage.getItem('token'), props.match.params.id).then((res) => {
+      getProvider(props.match.params.id, localStorage.getItem('token')).then((res) => {
         setProvider(res.data);
       }).catch((e) => {
         // add redirect
@@ -17,9 +17,9 @@ const Action = (props) => {
 
   const renderHelper = () => {
     if (provider) {
-      return <Form provider={provider} ActionMethod={UpdateProvider} ActionBtn="Modifier" />;
+      return <Form provider={provider} ActionMethod={updateProvider} ActionBtn="Modifier" />;
     }
-    return <Form ActionMethod={AddProvider} ActionBtn="Ajouter" />;
+    return <Form ActionMethod={addProvider} ActionBtn="Ajouter" />;
   };
 
   return renderHelper();

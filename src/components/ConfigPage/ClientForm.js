@@ -124,7 +124,7 @@ const ClientForm = (props) => {
         telephone1: tel1,
         telephone2: tel2,
       };
-      props.ActionMethod(localStorage.getItem('token'), client).then((res) => {
+      props.ActionMethod(client, localStorage.getItem('token')).then((res) => {
         setSuccessMsg('client saved');
       }).catch((e) => {
         console.log(e);

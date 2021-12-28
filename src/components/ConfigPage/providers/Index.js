@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { getAllProviders } from '../../../functions/Api';
+import { getProviders } from '../../../functions/ProviderApi';
 import Card from './Card';
 
 const ProvidersPage = () => {
@@ -9,7 +9,8 @@ const ProvidersPage = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    getAllProviders(token).then((res) => {
+    
+    getProviders(token).then((res) => {
       setProviders(res.data);
     }).catch((err) => {
       // redirect to 404 later
@@ -19,14 +20,20 @@ const ProvidersPage = () => {
 
   const RenderHelper = (providers) => {
     if (providers) {
-      const res = providers.map((provider) => (<Card key={provider.id} provider={provider} />));
-      return res;
+      return providers.map(
+        (provider) => (
+          <Card key={provider.id} provider={provider} />
+        )
+      );
     }
   };
+  
   return (
     <div className="mytable">
       <div className="text-end bg-light">
-        <Link className="btn bg-light-blue text-white m-4" to="/providers/create">Ajouter Un Fournisseur</Link>
+        <Link className="btn bg-light-blue text-white m-4" to="/providers/create">
+          Ajouter Un Fournisseur
+        </Link>
       </div>
       <table>
         <thead>

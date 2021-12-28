@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 const Form = ({ provider, ActionMethod, ActionBtn }) => {
+  
   // ?errors
   const [nomErrorClassName, setNomErrorClassName] = useState('');
   const [adressErrorClassName, setAdressErrorClassName] = useState('');
@@ -8,6 +9,7 @@ const Form = ({ provider, ActionMethod, ActionBtn }) => {
   const [codeErrorClassName, setCodeErrorClassName] = useState('');
   const [tel1ErrorClassName, setTel1ErrorClassName] = useState('');
   const [faxErrorClassName, setFaxErrorClassName] = useState('');
+  
   // ? error messages
   const [nomErrorMsg, setNomErrorMsg] = useState('');
   const [adressErrorMsg, setAdressErrorMsg] = useState('');
@@ -15,11 +17,11 @@ const Form = ({ provider, ActionMethod, ActionBtn }) => {
   const [codeErrorMsg, setCodeErrorMsg] = useState('');
   const [tel1ErrorMsg, setTel1ErrorMsg] = useState('');
   const [faxErrorMsg, setFaxErrorMsg] = useState('');
+  
   // ? success msg
   const [successMsg, setSuccessMsg] = useState('');
-
+  
   // ? fields
-
   const [nom, setNom] = useState('');
   const [adress, setAdress] = useState('');
   const [email, setEmail] = useState('');
@@ -27,6 +29,7 @@ const Form = ({ provider, ActionMethod, ActionBtn }) => {
   const [telephone1, setTel1] = useState('');
   const [telephone2, setTel2] = useState('');
   const [fax, setFax] = useState('');
+
   useEffect(() => {
     if (provider) {
       setNom(provider.nom);
@@ -81,13 +84,7 @@ const Form = ({ provider, ActionMethod, ActionBtn }) => {
       setTel1ErrorMsg('Tel1 is rquired!');
       setTel1ErrorClassName('alert-danger');
     }
-    if (
-      nom
-       && adress
-       && fax
-       && email
-       && code
-       && telephone1) {
+    if (nom && adress && fax && email && code && telephone1) {
       const id = provider ? provider.id : null;
       const providerData = {
         id,
@@ -99,7 +96,8 @@ const Form = ({ provider, ActionMethod, ActionBtn }) => {
         telephone1,
         telephone2,
       };
-      ActionMethod(localStorage.getItem('token'), providerData).then(() => {
+
+      ActionMethod(providerData, localStorage.getItem('token')).then(() => {
         setSuccessMsg('Le Fournisseur a été enregistré');
       }).catch((e) => {
         console.log(e);
@@ -107,9 +105,9 @@ const Form = ({ provider, ActionMethod, ActionBtn }) => {
     }
   };
 
-  const showSuccess = (msg) => {
-    if (msg) {
-      return <p className="alert alert-success">{msg}</p>;
+  const showSuccess = (message) => {
+    if (message) {
+      return <p className="alert alert-success">{message}</p>;
     }
   };
 
@@ -118,6 +116,7 @@ const Form = ({ provider, ActionMethod, ActionBtn }) => {
       return <p className="text-danger">{err}</p>;
     }
   };
+
   return (
     <div className="add-user-form bg-white">
       <h1 className="text-center p-3">
@@ -125,10 +124,9 @@ const Form = ({ provider, ActionMethod, ActionBtn }) => {
         {' '}
         Fournisseurs
       </h1>
-      { showSuccess(successMsg)}
+      { showSuccess(successMsg) }
       <form onSubmit={handlesubmit} className="bg-light border border-lightblue">
         <div className="p-5">
-
           <div className="mb-3">
             <label className="form-label">Nom *</label>
             <div className="input-wrapper">
@@ -218,7 +216,6 @@ const Form = ({ provider, ActionMethod, ActionBtn }) => {
             </div>
             {showError(codeErrorMsg)}
           </div>
-
         </div>
         <div className="submit-wraper px-5 py-2 text-end">
           <input className="btn bg-light-blue text-white" type="submit" value={ActionBtn} />

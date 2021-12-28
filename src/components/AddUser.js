@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { createUser } from '../functions/Api';
+import { createUser } from '../functions/UserApi';
 
 const AddUser = () => {
   // ?errors

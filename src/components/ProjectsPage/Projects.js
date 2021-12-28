@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getAllProjects } from '../../functions/Api';
+import { getProjects } from '../../functions/ProjectApi';
 import ProjectCard from './ProjectCard';
 
 const Projects = () => {
   const [projects, setProjects] = useState(null);
   useEffect(() => {
-    getAllProjects(localStorage.getItem('token')).then((res) => {
+    getProjects(localStorage.getItem('token')).then((res) => {
       setProjects(res.data);
     }).catch((e) => {
       console.log(e);

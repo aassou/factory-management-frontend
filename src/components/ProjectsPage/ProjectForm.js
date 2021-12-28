@@ -354,7 +354,7 @@ const ProjectForm = (props) => {
         status: status === true ? 1 : 0,
         closed: closed === true ? 1 : 0,
       };
-      props.ActionMethod(localStorage.getItem('token'), project).then((res) => {
+      props.ActionMethod(project, localStorage.getItem('token')).then((res) => {
         setSuccessMsg('Project saved successfully');
       }).catch((err) => {
         console.log(err);

@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { confirmAlert } from 'react-confirm-alert';
-import { getAllUsers } from '../../functions/Api';
+import { getUsers, deleteUser } from '../../functions/UserApi';
 import UsermanagerCard from './UsermanagerCard';
-import { deleteUser } from '../../functions/Api';
 
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import '../../assets/style/usermanager.scss';
@@ -12,7 +11,7 @@ export default function UserManagment() {
   const [users, setUsers] = useState(null);
 
   useEffect(() => {
-    getAllUsers(localStorage.getItem('token')).then((res) => {
+    getUsers(localStorage.getItem('token')).then((res) => {
       setUsers(res.data.users);
     }).catch((err) => {
       console.log(err);
@@ -27,8 +26,8 @@ export default function UserManagment() {
         {
           label: 'Yes',
           onClick: () => deleteUser(
-            localStorage.getItem('token'),
             id,
+            localStorage.getItem('token')
           ).then(() => {
             const newusers = users.filter((user) => user.id !== id);
             setUsers(newusers);

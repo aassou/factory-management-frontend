@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { useState } from 'react';
-import { UpdateUser } from '../../functions/Api';
+import { updateUser } from '../../functions/UserApi';
 import ProfileForm from '../ProfileForm';
 
 export default function UsermanagerCard({ user, DeleteUser }) {
@@ -10,7 +10,7 @@ export default function UsermanagerCard({ user, DeleteUser }) {
 
   // update user profile in the server
   const updateProfile = (newprofil) => {
-    UpdateUser({ status, profil: newprofil, id: user.id }, localStorage.getItem('token')).catch((err) => {
+    updateUser({ status, profil: newprofil, id: user.id }, localStorage.getItem('token')).catch((err) => {
       console.log(err);
     });
     setProfil(newprofil);
@@ -35,7 +35,7 @@ export default function UsermanagerCard({ user, DeleteUser }) {
   const UpdateStatus = () => {
     const newstatus = status === 0 ? 1 : 0;
     setStatus(newstatus);
-    UpdateUser({ status: newstatus, profil: user.profil, id: user.id }, localStorage.getItem('token')).catch((err) => {
+    updateUser({ status: newstatus, profil: user.profil, id: user.id }, localStorage.getItem('token')).catch((err) => {
       console.log(err);
     });
   };

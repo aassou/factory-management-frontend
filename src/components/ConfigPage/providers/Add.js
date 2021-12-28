@@ -1,7 +1,7 @@
 import { Component } from 'react';
-import { createApartment } from '../../../functions/ApartmentApi';
+import { addProvider } from '../../../functions/ProviderApi';
 
-class AddApartment extends Component {
+class AddProvider extends Component {
   constructor(props) {
     super(props);
 
@@ -32,7 +32,7 @@ class AddApartment extends Component {
       && this.state.level
       && this.state.numberPiece
     ) {
-      createApartment({
+      addProvider({
         title: this.state.title,
         surface: this.state.surface,
         facade: this.state.facade,

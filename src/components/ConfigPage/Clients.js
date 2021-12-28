@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { getAllClients } from '../../functions/Api';
+import { getClients } from '../../functions/ClientApi';
 import ClientsCard from './ClientsCard';
 
 const Clients = () => {
@@ -9,7 +9,8 @@ const Clients = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    getAllClients(token).then((res) => {
+
+    getClients(token).then((res) => {
       setClients(res.data);
     }).catch((err) => {
       // redirect to 404 later
@@ -26,7 +27,9 @@ const Clients = () => {
   return (
     <div className="mytable">
       <div className="text-end bg-light">
-        <Link className="btn bg-light-blue text-white m-4" to="/configuration/clients/add">Ajouter Un Client</Link>
+        <Link className="btn bg-light-blue text-white m-4" to="/configuration/clients/add">
+          Ajouter Un Client
+        </Link>
       </div>
       <table>
         <thead>

@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import ClientForm from './ClientForm';
-import { getClientData, AddClient, UpdateClient } from '../../functions/Api';
+import { getClient, addClient, updateClient } from '../../functions/ClientApi';
 
 const EditClient = (props) => {
   const [client, setClient] = useState(null);
+  
   useEffect(() => {
     if (props.match.params.id) {
-      getClientData(localStorage.getItem('token'), props.match.params.id)
+      getClient(props.match.params.id, localStorage.getItem('token'))
         .then((res) => {
           setClient(res.data);
         }).catch((e) => {
@@ -18,9 +19,9 @@ const EditClient = (props) => {
 
   const renderHelper = () => {
     if (client) {
-      return <ClientForm client={client} ActionMethod={UpdateClient} ActionBtn="Update" />;
+      return <ClientForm client={client} ActionMethod={updateClient} ActionBtn="Update" />;
     }
-    return <ClientForm ActionMethod={AddClient} ActionBtn="Create" />;
+    return <ClientForm ActionMethod={addClient} ActionBtn="Create" />;
   };
 
   return renderHelper();

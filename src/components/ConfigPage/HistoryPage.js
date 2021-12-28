@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { getHistoryMonths } from '../../functions/Api';
+import { getHistory } from '../../functions/HistoryApi';
 
 const HistoryPage = () => {
   const [historyDates, setHistoryDates] = useState(null);
 
   useEffect(() => {
-    getHistoryMonths(localStorage.getItem('token')).then((res) => {
+    getHistory(localStorage.getItem('token')).then((res) => {
       setHistoryDates(res.data);
     }).catch((e) => {
       console.log(e);

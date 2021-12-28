@@ -10,7 +10,7 @@ const Card = ({ provider }) => (
     <td>{provider.fax}</td>
     <td>{provider.email}</td>
     <td>
-      <Link to={`/configuration/providers/${provider.id}/update`} className="btn me-2 text-white bg-success">
+      <Link to={`/providers/${provider.id}/update`} className="btn me-2 text-white bg-success">
         {' '}
         <i className="fas fa-sync" />
       </Link>

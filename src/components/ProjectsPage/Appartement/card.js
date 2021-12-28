@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { UpdateAppartement } from '../../../functions/Api';
+import { updateApartment } from '../../../functions/ApartmentApi';
 import ReserveForCard from './ReserveForCard';
 import SoldToCard from './SoldToCard';
 
@@ -53,7 +53,7 @@ class Card extends Component {
         this.setState({ apprt });
         this.setState({ forClient: '' });
       }
-      UpdateAppartement(token, data, id)
+      updateApartment(data, id, token)
         .then(() => {
           this.setState({ status: newstatus });
         })
@@ -67,7 +67,7 @@ class Card extends Component {
     const newcellar = parseInt(this.state.cellar) === 0 ? 1 : 0;
     const token = localStorage.getItem('token');
     const { id } = this.props.appartement;
-    UpdateAppartement(token, { cellar: newcellar }, id)
+    updateApartment({ cellar: newcellar }, id, token)
       .then(() => {
         this.setState({ cellar: newcellar });
       })
@@ -96,7 +96,7 @@ class Card extends Component {
       const data = {
         [e.target.name]: this.state[e.target.name],
       };
-      UpdateAppartement(token, data, id)
+      updateApartment(data, id, token)
         .then((res) => {
           this.setState({
             apprt: res.data,

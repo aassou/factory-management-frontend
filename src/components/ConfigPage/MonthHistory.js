@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { getHistoryByMonth } from '../../functions/Api';
+import { getHistoryByMonth } from '../../functions/HistoryApi';
 
 const MonthHistory = (props) => {
   const [historyData, setHistoryData] = useState(null);
   const param = props.match.params;
   useEffect(() => {
-    getHistoryByMonth(localStorage.getItem('token'), param.month, param.year).then((res) => {
+    getHistoryByMonth(param.month, param.year, localStorage.getItem('token')).then((res) => {
       setHistoryData(res.data);
     }).catch((e) => {
       console.log(e);
