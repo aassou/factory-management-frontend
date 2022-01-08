@@ -3,7 +3,7 @@ import DashboardButton from './DashboardButton';
 const DashboardButtons = () => {
   const tiles = [
     {
-      name: 'Produits', 
+      name: 'Produits',
       link: 'products', 
       color: 'navy-card', 
       icon: 'far fa-barcode', 
@@ -18,7 +18,7 @@ const DashboardButtons = () => {
     },
     {
       name: 'Fournisseurs', 
-      link: 'providers', 
+      link: 'suppliers', 
       color: 'aqua-card', 
       icon: 'fa fa-truck', 
       description: 'Gestion, vérification et stockage des commandes internes.',

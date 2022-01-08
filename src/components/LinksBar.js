@@ -8,7 +8,7 @@ const LinksBar = () => {
     '': { title: '', icon: '' },
     'products': { title: 'Produits', icon: 'fa fa-barcode' },
     'sales': { title: 'Ventes', icon: 'fa fa-shopping-cart' },
-    'providers': { title: 'Fournisseurs', icon: 'fa fa-truck' },
+    'suppliers': { title: 'Fournisseurs', icon: 'fa fa-truck', link: '/suppliers' },
     'warehouse': { title: 'Stock', icon: 'fa fa-cubes' },
     'cutting': { title: 'Découpage', icon: 'fa fa-cut' },
     'painting': { title: 'Peinture', icon: 'fa fa-paint-brush' },
@@ -22,13 +22,23 @@ const LinksBar = () => {
   // ? this is a temporry solution so the app don't crash
   // ? will get replaced after we get new links for configpage
 
+  const removeItems = (array, itemsToRemove) => {
+    return array.filter(v => {
+      return !itemsToRemove.includes(v);
+    }).filter(v => {
+      return isNaN(v)
+    });
+  }
+
   const bar = location.pathname.split('/');
   const linkBar = () => {
-    if (bar.length > 2) {
+    const newBar = removeItems(bar, ['update', 'add', 'delete']);
+    console.log(bar[1]);
+    if (newBar.length > 2) {
       return (
         <span>
           /
-          {bar.slice(2).join(' / ').replaceAll('-', ' ')}
+          {newBar.slice(2).join(' / ').replaceAll('-', ' ')}
         </span>
       );
     }
@@ -39,12 +49,14 @@ const LinksBar = () => {
       <i className="fas fa-home" />{' '}
       <Link to='/'>Accueil</Link> / &nbsp;
       <i className={icons[bar[1]].icon} />
-      {' '}
-      &nbsp;
-      {icons[bar[1]].title}
-      {' '}
-      &nbsp;
-      {linkBar()}
+      <Link to={icons[bar[1]].link}>
+        {' '}
+        &nbsp;
+        {icons[bar[1]].title}
+        {' '}
+        &nbsp;
+        {linkBar()}
+      </Link>
     </div>
   );
 };

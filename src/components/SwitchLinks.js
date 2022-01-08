@@ -13,6 +13,8 @@ import Projects from './ProjectsPage/Projects';
 import ProviderPage from './ConfigPage/providers/Index';
 import ProviderAction from './ConfigPage/providers/Action';
 import Appartments from './ProjectsPage/Appartement/index';
+import SupplierList from './supplier/index';
+import SupplierEdit from './supplier/edit';
 
 const SwitchLinks = () => (
   <Switch>
@@ -32,15 +34,18 @@ const SwitchLinks = () => (
     <Route path="/configuration/history" exact component={HistoryPage} />
     <Route path="/configuration/history/:month/:year" exact component={MonthHistory} />
     {/* providers */}
-    <Route path="/providers/" exact component={ProviderPage} />
+    {/* <Route path="/providers/" exact component={ProviderPage} />
     <Route path="/providers/create" exact component={ProviderAction} />
-    <Route path="/providers/:id/update" exact component={ProviderAction} />
+    <Route path="/providers/:id/update" exact component={ProviderAction} /> */}
     {/* products */}
     <Route path="/products" exact component={Projects} />
     <Route path="/projets/create" exact component={AddEditProject} />
     <Route path="/projets/:id/update" exact component={AddEditProject} />
     {/* appartements */}
     <Route path="/projets/:id/gestion" exact component={Appartments} />
+    {/* Suppliers */}
+    <Route path="/suppliers" exact component={SupplierList} />
+    <Route path="/suppliers/:id/update" exact component={SupplierEdit} />
   </Switch>
 );
 export default SwitchLinks;

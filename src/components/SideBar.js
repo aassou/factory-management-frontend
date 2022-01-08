@@ -8,7 +8,7 @@ const SideBar = () => {
     { title: 'Accueil', link: '/', icon: 'fas fa-home' },
     { title: 'Produits', link: '/products', icon: 'fa fa-barcode' },
     { title: 'Ventes', link: '/sales', icon: 'fa fa-shopping-cart' },
-    { title: 'Fournisseurs', link: '/providers', icon: 'fa fa-truck' },
+    { title: 'Fournisseurs', link: '/suppliers', icon: 'fa fa-truck' },
     { title: 'Stock', link: '/warehouse', icon: 'fa fa-cubes' },
     { title: 'Découpage', link: '/cutting', icon: 'fa fa-cut' },
     { title: 'Peinture', link: '/painting', icon: 'fa fa-paint-brush' },
