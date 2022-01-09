@@ -5,19 +5,19 @@ const LinksBar = () => {
   const location = useLocation();
 
   const icons = {
-    '': { title: '', icon: '' },
-    'products': { title: 'Produits', icon: 'fa fa-barcode' },
-    'sales': { title: 'Ventes', icon: 'fa fa-shopping-cart' },
+    '': { title: '', icon: '', link: '' },
+    'products': { title: 'Produits', icon: 'fa fa-barcode', link: '' },
+    'sales': { title: 'Ventes', icon: 'fa fa-shopping-cart', link: '' },
     'suppliers': { title: 'Fournisseurs', icon: 'fa fa-truck', link: '/suppliers' },
-    'warehouse': { title: 'Stock', icon: 'fa fa-cubes' },
-    'cutting': { title: 'Découpage', icon: 'fa fa-cut' },
-    'painting': { title: 'Peinture', icon: 'fa fa-paint-brush' },
-    'crafts': { title: 'Bricolage', icon: 'fa fa-gavel' },
-    'employees': { title: 'Employées', icon: 'fa fa-users' },
-    'clients-ranking': { title: 'Classement Client', icon: 'fa fa-star' },
-    'reports': { title: 'États', icon: 'far fa-copy' },
-    'cash': { title: 'Caisse', icon: 'fa fa-credit-card' },
-    'settings': { title: 'Paramètrages', icon: 'fa fa-cogs' },
+    'warehouse': { title: 'Stock', icon: 'fa fa-cubes', link: '' },
+    'cutting': { title: 'Découpage', icon: 'fa fa-cut', link: '' },
+    'painting': { title: 'Peinture', icon: 'fa fa-paint-brush', link: '' },
+    'crafts': { title: 'Bricolage', icon: 'fa fa-gavel', link: '' },
+    'employees': { title: 'Employées', icon: 'fa fa-users', link: '' },
+    'clients-ranking': { title: 'Classement Client', icon: 'fa fa-star', link: '' },
+    'reports': { title: 'États', icon: 'far fa-copy', link: '' },
+    'cash': { title: 'Caisse', icon: 'fa fa-credit-card', link: '' },
+    'settings': { title: 'Paramètrages', icon: 'fa fa-cogs', link: '' },
   };
   // ? this is a temporry solution so the app don't crash
   // ? will get replaced after we get new links for configpage
@@ -33,7 +33,7 @@ const LinksBar = () => {
   const bar = location.pathname.split('/');
   const linkBar = () => {
     const newBar = removeItems(bar, ['update', 'add', 'delete']);
-    console.log(bar[1]);
+    
     if (newBar.length > 2) {
       return (
         <span>
