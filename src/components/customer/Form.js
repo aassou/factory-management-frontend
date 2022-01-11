@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import '../../assets/style/supplier.scss';
+import '../../assets/style/customer.scss';
 
 const Form = (props) => {
     // ?errors
@@ -24,14 +24,14 @@ const Form = (props) => {
     const [number, setNumber] = useState('');
 
     useEffect(() => {
-        if (props.supplier) {
-            const { supplier } = props;
-            setName(supplier.name);
-            setAddress(supplier.address);
-            setPhone(supplier.phone);
-            setNumber(supplier.number);
+        if (props.customer) {
+            const { customer } = props;
+            setName(customer.name);
+            setAddress(customer.address);
+            setPhone(customer.phone);
+            setNumber(customer.number);
         }
-    }, [props.supplier]);
+    }, [props.customer]);
 
     const handlesubmit = (e) => {
         e.preventDefault();
@@ -75,8 +75,8 @@ const Form = (props) => {
             phone,
             number
         ) {
-            const id = props.supplier ? props.supplier.id : null;
-            const supplier = {
+            const id = props.customer ? props.customer.id : null;
+            const customer = {
                 id,
                 name,
                 address,
@@ -84,8 +84,8 @@ const Form = (props) => {
                 number
             };
 
-            props.ActionMethod(supplier, localStorage.getItem('token')).then((res) => {
-                setSuccessMsg('Supplier saved successfully');
+            props.ActionMethod(customer, localStorage.getItem('token')).then((res) => {
+                setSuccessMsg('Customer saved successfully');
             }).catch((err) => {
                 console.log(err);
             });
@@ -109,7 +109,7 @@ const Form = (props) => {
             <h1 className="text-center p-3">
                 {props.ActionBtn}
                 {' '}
-                Fournisseur
+                Client
             </h1>
             {showSuccess(successMsg)}
             <form onSubmit={handlesubmit} className="bg-light border border-lightblue">

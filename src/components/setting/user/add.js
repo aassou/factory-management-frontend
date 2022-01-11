@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { createUser } from '../functions/UserApi';
+import { createUser } from '../../../functions/UserApi';
 
-const AddUser = () => {
+const UserAdd = () => {
   // ?errors
   const [passwordConfErrorClassName, setPasswordConfErrorClassName] = useState('');
   const [passwordErrorClassName, setPasswordErrorClassName] = useState('');
@@ -141,4 +141,4 @@ const AddUser = () => {
   );
 };
 
-export default AddUser;
+export default UserAdd;

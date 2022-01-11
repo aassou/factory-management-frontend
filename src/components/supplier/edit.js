@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Form from './Form';
-import { getSupplier, patchSupplier } from '../../functions/SupplierApi';
+import { getSupplier, putSupplier } from '../../functions/SupplierApi';
 
 const SupplierEdit = (props) => {
     const [supplier, setSupplier] = useState(null);
@@ -15,11 +15,9 @@ const SupplierEdit = (props) => {
         }
     }, []);
 
-    const renderHelper = () => {
-        return <Form supplier={supplier} ActionMethod={patchSupplier} ActionBtn="Modifier" />
-    };
-
-    return renderHelper();
+    return (
+        <Form supplier={supplier} ActionMethod={putSupplier} ActionBtn="Modifier" />
+    )
 };
 
 export default SupplierEdit;

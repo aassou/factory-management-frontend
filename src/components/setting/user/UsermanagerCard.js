@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { useState } from 'react';
-import { updateUser } from '../../functions/UserApi';
-import ProfileForm from '../ProfileForm';
+import { updateUser } from '../../../functions/UserApi';
+import ProfileForm from './ProfileForm';
 
 export default function UsermanagerCard({ user, DeleteUser }) {
   const [status, setStatus] = useState(user.status);
@@ -70,7 +70,7 @@ export default function UsermanagerCard({ user, DeleteUser }) {
       <td>{user.username}</td>
       <td>{profil}</td>
       <td>
-        {handledate(user.created.date)}
+        {/* {handledate(user.created.date)} */}
         {' '}
       </td>
       <td>

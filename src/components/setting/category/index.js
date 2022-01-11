@@ -1,27 +1,27 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axiosInstance from "../../axios";
+import axiosInstance from "../../../axios";
 import TableBody from "./table";
-import { getSuppliers } from '../../functions/SupplierApi';
+import { getCategories } from '../../../functions/CategoryApi';
 
-import '../../assets/style/buttons.scss';
+import '../../../assets/style/buttons.scss';
 
-const SupplierList = () => {
-    const [suppliers, setSuppliers] = useState(null);
+const CategoryList = () => {
+    const [categories, setCategories] = useState(null);
 
     useEffect(async () => {
         const token = localStorage.getItem('token');
 
-        const res = await getSuppliers(token);
-        setSuppliers(res.data);
+        const res = await getCategories(token);
+        setCategories(res.data);
     }, []);
 
-    const renderHelper = (suppliers) => {
-        if (suppliers) {
-            const suppliersList = suppliers["hydra:member"];
+    const renderHelper = (categories) => {
+        if (categories) {
+            const categoriesList = categories["hydra:member"];
 
-            return suppliersList.map((supplier) => (
-                <TableBody key={supplier.id} supplier={supplier} />
+            return categoriesList.map((category) => (
+                <TableBody key={category.id} category={category} />
             ))
         }
     };
@@ -29,8 +29,8 @@ const SupplierList = () => {
     const goToFirstPage = async () => {
         const token = localStorage.getItem('token');
 
-        if (suppliers && suppliers["hydra:view"] && suppliers["hydra:view"]["hydra:first"]) {
-            const res = await axiosInstance.get(suppliers["hydra:view"]["hydra:first"],
+        if (categories && categories["hydra:view"] && categories["hydra:view"]["hydra:first"]) {
+            const res = await axiosInstance.get(categories["hydra:view"]["hydra:first"],
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -38,7 +38,7 @@ const SupplierList = () => {
                 }
             );
     
-            setSuppliers(res.data);
+            setCategories(res.data);
             console.log(res.data);
         }
     }
@@ -46,8 +46,8 @@ const SupplierList = () => {
     const goToNextPage = async () => {
         const token = localStorage.getItem('token');
 
-        if (suppliers && suppliers["hydra:view"] && suppliers["hydra:view"]["hydra:next"]) {
-            const res = await axiosInstance.get(suppliers["hydra:view"]["hydra:next"],
+        if (categories && categories["hydra:view"] && categories["hydra:view"]["hydra:next"]) {
+            const res = await axiosInstance.get(categories["hydra:view"]["hydra:next"],
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -55,7 +55,7 @@ const SupplierList = () => {
                 }
             );
     
-            setSuppliers(res.data);
+            setCategories(res.data);
             console.log(res.data);
         }
     }
@@ -63,8 +63,8 @@ const SupplierList = () => {
     const goToPrevPage = async () => {
         const token = localStorage.getItem('token');
 
-        if (suppliers && suppliers["hydra:view"] && suppliers["hydra:view"]["hydra:previous"]) {
-            const res = await axiosInstance.get(suppliers["hydra:view"]["hydra:previous"],
+        if (categories && categories["hydra:view"] && categories["hydra:view"]["hydra:previous"]) {
+            const res = await axiosInstance.get(categories["hydra:view"]["hydra:previous"],
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -72,7 +72,7 @@ const SupplierList = () => {
                 }
             );
     
-            setSuppliers(res.data);
+            setCategories(res.data);
             console.log(res.data);
         }
     }
@@ -80,8 +80,8 @@ const SupplierList = () => {
     const goToLastPage = async () => {
         const token = localStorage.getItem('token');
 
-        if (suppliers && suppliers["hydra:view"] && suppliers["hydra:view"]["hydra:last"]) {
-            const res = await axiosInstance.get(suppliers["hydra:view"]["hydra:last"],
+        if (categories && categories["hydra:view"] && categories["hydra:view"]["hydra:last"]) {
+            const res = await axiosInstance.get(categories["hydra:view"]["hydra:last"],
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -89,7 +89,7 @@ const SupplierList = () => {
                 }
             );
     
-            setSuppliers(res.data);
+            setCategories(res.data);
             console.log(res.data);
         }
     }
@@ -97,23 +97,21 @@ const SupplierList = () => {
     return (
         <div className="mytable">
             <div className="text-end bg-light">
-                <Link className="btn bg-light-blue text-white m-4" to="/suppliers/add">
-                    Ajouter Un Fournisseur
+                <Link className="btn bg-light-blue text-white m-4" to="/settings/categories/add">
+                    Ajouter Une Catégorie
                 </Link>
             </div>
-            <h1>Liste des Fournisseurs</h1>
+            <h1>Liste des Catégories</h1>
             <table>
                 <thead>
                     <tr>
-                        <th>N° Founisseur</th>
                         <th>Nom</th>
-                        <th>Adresse</th>
-                        <th>Téléphone</th>
+                        <th>Image</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {renderHelper(suppliers)}
+                    {renderHelper(categories)}
                 </tbody>
             </table>
             <button type="button" className="btn-inverse" onClick={goToFirstPage}>&lt;</button>
@@ -124,4 +122,4 @@ const SupplierList = () => {
     )
 };
 
-export default SupplierList;
+export default CategoryList;

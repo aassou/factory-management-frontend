@@ -2,26 +2,26 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axiosInstance from "../../axios";
 import TableBody from "./table";
-import { getSuppliers } from '../../functions/SupplierApi';
+import { getCustomers } from '../../functions/CustomerApi';
 
 import '../../assets/style/buttons.scss';
 
-const SupplierList = () => {
-    const [suppliers, setSuppliers] = useState(null);
+const CustomerList = () => {
+    const [customers, setCustomers] = useState(null);
 
     useEffect(async () => {
         const token = localStorage.getItem('token');
 
-        const res = await getSuppliers(token);
-        setSuppliers(res.data);
+        const res = await getCustomers(token);
+        setCustomers(res.data);
     }, []);
 
-    const renderHelper = (suppliers) => {
-        if (suppliers) {
-            const suppliersList = suppliers["hydra:member"];
+    const renderHelper = (customers) => {
+        if (customers) {
+            const customersList = customers["hydra:member"];
 
-            return suppliersList.map((supplier) => (
-                <TableBody key={supplier.id} supplier={supplier} />
+            return customersList.map((customer) => (
+                <TableBody key={customer.id} customer={customer} />
             ))
         }
     };
@@ -29,8 +29,8 @@ const SupplierList = () => {
     const goToFirstPage = async () => {
         const token = localStorage.getItem('token');
 
-        if (suppliers && suppliers["hydra:view"] && suppliers["hydra:view"]["hydra:first"]) {
-            const res = await axiosInstance.get(suppliers["hydra:view"]["hydra:first"],
+        if (customers && customers["hydra:view"] && customers["hydra:view"]["hydra:first"]) {
+            const res = await axiosInstance.get(customers["hydra:view"]["hydra:first"],
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -38,7 +38,7 @@ const SupplierList = () => {
                 }
             );
     
-            setSuppliers(res.data);
+            setCustomers(res.data);
             console.log(res.data);
         }
     }
@@ -46,8 +46,8 @@ const SupplierList = () => {
     const goToNextPage = async () => {
         const token = localStorage.getItem('token');
 
-        if (suppliers && suppliers["hydra:view"] && suppliers["hydra:view"]["hydra:next"]) {
-            const res = await axiosInstance.get(suppliers["hydra:view"]["hydra:next"],
+        if (customers && customers["hydra:view"] && customers["hydra:view"]["hydra:next"]) {
+            const res = await axiosInstance.get(customers["hydra:view"]["hydra:next"],
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -55,7 +55,7 @@ const SupplierList = () => {
                 }
             );
     
-            setSuppliers(res.data);
+            setCustomers(res.data);
             console.log(res.data);
         }
     }
@@ -63,8 +63,8 @@ const SupplierList = () => {
     const goToPrevPage = async () => {
         const token = localStorage.getItem('token');
 
-        if (suppliers && suppliers["hydra:view"] && suppliers["hydra:view"]["hydra:previous"]) {
-            const res = await axiosInstance.get(suppliers["hydra:view"]["hydra:previous"],
+        if (customers && customers["hydra:view"] && customers["hydra:view"]["hydra:previous"]) {
+            const res = await axiosInstance.get(customers["hydra:view"]["hydra:previous"],
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -72,7 +72,7 @@ const SupplierList = () => {
                 }
             );
     
-            setSuppliers(res.data);
+            setCustomers(res.data);
             console.log(res.data);
         }
     }
@@ -80,8 +80,8 @@ const SupplierList = () => {
     const goToLastPage = async () => {
         const token = localStorage.getItem('token');
 
-        if (suppliers && suppliers["hydra:view"] && suppliers["hydra:view"]["hydra:last"]) {
-            const res = await axiosInstance.get(suppliers["hydra:view"]["hydra:last"],
+        if (customers && customers["hydra:view"] && customers["hydra:view"]["hydra:last"]) {
+            const res = await axiosInstance.get(customers["hydra:view"]["hydra:last"],
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -89,7 +89,7 @@ const SupplierList = () => {
                 }
             );
     
-            setSuppliers(res.data);
+            setCustomers(res.data);
             console.log(res.data);
         }
     }
@@ -97,15 +97,15 @@ const SupplierList = () => {
     return (
         <div className="mytable">
             <div className="text-end bg-light">
-                <Link className="btn bg-light-blue text-white m-4" to="/suppliers/add">
-                    Ajouter Un Fournisseur
+                <Link className="btn bg-light-blue text-white m-4" to="/customers/add">
+                    Ajouter Un Client
                 </Link>
             </div>
-            <h1>Liste des Fournisseurs</h1>
+            <h1>Liste des Clients</h1>
             <table>
                 <thead>
                     <tr>
-                        <th>N° Founisseur</th>
+                        <th>N° Client</th>
                         <th>Nom</th>
                         <th>Adresse</th>
                         <th>Téléphone</th>
@@ -113,7 +113,7 @@ const SupplierList = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {renderHelper(suppliers)}
+                    {renderHelper(customers)}
                 </tbody>
             </table>
             <button type="button" className="btn-inverse" onClick={goToFirstPage}>&lt;</button>
@@ -124,4 +124,4 @@ const SupplierList = () => {
     )
 };
 
-export default SupplierList;
+export default CustomerList;

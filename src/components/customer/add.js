@@ -1,15 +1,15 @@
 // import { useEffect, useState } from 'react';
 import Form from './Form';
-import { addSupplier } from '../../functions/SupplierApi';
+import { addCustomer } from '../../functions/CustomerApi';
 
-const SupplierAdd = (props) => {
+const CustomerAdd = (props) => {
     // const [supplier, setSupplier] = useState(null);
 
     // useEffect(() => {}, []);
 
     return (
-        <Form ActionMethod={addSupplier} ActionBtn="Ajouter" />
+        <Form ActionMethod={addCustomer} ActionBtn="Ajouter" />
     )
 };
 
-export default SupplierAdd;
+export default CustomerAdd;
