@@ -1,12 +1,6 @@
 import { Switch, Route } from 'react-router-dom';
 import Login from '../containers/login';
 import Dashboard from './dashboard/Dashboard';
-import EditClient from './setting/EditClient';
-import AddEditProject from './ProjectsPage/AddEditProject';
-import Projects from './ProjectsPage/Projects';
-import ProviderPage from './setting/providers/Index';
-import ProviderAction from './setting/providers/Action';
-import Appartments from './ProjectsPage/Appartement/index';
 
 // supplier
 import SupplierList from './supplier/index';
@@ -41,16 +35,6 @@ const SwitchLinks = () => (
         <Route path="/" exact>
             <Dashboard />
         </Route>
-        {/* providers */}
-        {/* <Route path="/providers/" exact component={ProviderPage} />
-        <Route path="/providers/create" exact component={ProviderAction} />
-        <Route path="/providers/:id/update" exact component={ProviderAction} /> */}
-        {/* products */}
-        <Route path="/products" exact component={Projects} />
-        <Route path="/projets/create" exact component={AddEditProject} />
-        <Route path="/projets/:id/update" exact component={AddEditProject} />
-        {/* appartements */}
-        <Route path="/projets/:id/gestion" exact component={Appartments} />
         {/* Suppliers */}
         <Route path="/suppliers" exact component={SupplierList} />
         <Route path="/suppliers/:id/update" exact component={SupplierEdit} />
@@ -74,4 +58,5 @@ const SwitchLinks = () => (
         <Route path="/settings/history/:month/:year" exact component={MonthHistory} />
     </Switch>
 );
+
 export default SwitchLinks;

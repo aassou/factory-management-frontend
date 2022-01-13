@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 import axiosInstance from "../../axios";
 import TableBody from "./table";
 import { getCustomers } from '../../functions/CustomerApi';
+import Pagination from "../pagination/Pagination";
 
 import '../../assets/style/buttons.scss';
 
 const CustomerList = () => {
     const [customers, setCustomers] = useState(null);
+    const token = localStorage.getItem('token');
 
     useEffect(async () => {
-        const token = localStorage.getItem('token');
-
         const res = await getCustomers(token);
         setCustomers(res.data);
     }, []);
@@ -25,74 +25,6 @@ const CustomerList = () => {
             ))
         }
     };
-
-    const goToFirstPage = async () => {
-        const token = localStorage.getItem('token');
-
-        if (customers && customers["hydra:view"] && customers["hydra:view"]["hydra:first"]) {
-            const res = await axiosInstance.get(customers["hydra:view"]["hydra:first"],
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                }
-            );
-    
-            setCustomers(res.data);
-            console.log(res.data);
-        }
-    }
-
-    const goToNextPage = async () => {
-        const token = localStorage.getItem('token');
-
-        if (customers && customers["hydra:view"] && customers["hydra:view"]["hydra:next"]) {
-            const res = await axiosInstance.get(customers["hydra:view"]["hydra:next"],
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                }
-            );
-    
-            setCustomers(res.data);
-            console.log(res.data);
-        }
-    }
-
-    const goToPrevPage = async () => {
-        const token = localStorage.getItem('token');
-
-        if (customers && customers["hydra:view"] && customers["hydra:view"]["hydra:previous"]) {
-            const res = await axiosInstance.get(customers["hydra:view"]["hydra:previous"],
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                }
-            );
-    
-            setCustomers(res.data);
-            console.log(res.data);
-        }
-    }
-
-    const goToLastPage = async () => {
-        const token = localStorage.getItem('token');
-
-        if (customers && customers["hydra:view"] && customers["hydra:view"]["hydra:last"]) {
-            const res = await axiosInstance.get(customers["hydra:view"]["hydra:last"],
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                }
-            );
-    
-            setCustomers(res.data);
-            console.log(res.data);
-        }
-    }
 
     return (
         <div className="mytable">
@@ -116,10 +48,7 @@ const CustomerList = () => {
                     {renderHelper(customers)}
                 </tbody>
             </table>
-            <button type="button" className="btn-inverse" onClick={goToFirstPage}>&lt;</button>
-            <button type="button" className="btn-inverse" onClick={goToPrevPage}>Précédent</button>
-            <button type="button" className="btn-inverse" onClick={goToNextPage}>Suivant</button>
-            <button type="button" className="btn-inverse" onClick={goToLastPage}>&gt;</button>
+            <Pagination  elements={customers} setElements={setCustomers} token={token} />
         </div>
     )
 };

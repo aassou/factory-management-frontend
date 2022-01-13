@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axiosInstance from "../../../axios";
 import TableBody from "./table";
 import { getCategories } from '../../../functions/CategoryApi';
+import Pagination from "../../pagination/Pagination";
 
 import '../../../assets/style/buttons.scss';
 
 const CategoryList = () => {
     const [categories, setCategories] = useState(null);
+    const token = localStorage.getItem('token');
 
     useEffect(async () => {
-        const token = localStorage.getItem('token');
-
         const res = await getCategories(token);
         setCategories(res.data);
     }, []);
@@ -25,74 +24,6 @@ const CategoryList = () => {
             ))
         }
     };
-
-    const goToFirstPage = async () => {
-        const token = localStorage.getItem('token');
-
-        if (categories && categories["hydra:view"] && categories["hydra:view"]["hydra:first"]) {
-            const res = await axiosInstance.get(categories["hydra:view"]["hydra:first"],
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                }
-            );
-    
-            setCategories(res.data);
-            console.log(res.data);
-        }
-    }
-
-    const goToNextPage = async () => {
-        const token = localStorage.getItem('token');
-
-        if (categories && categories["hydra:view"] && categories["hydra:view"]["hydra:next"]) {
-            const res = await axiosInstance.get(categories["hydra:view"]["hydra:next"],
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                }
-            );
-    
-            setCategories(res.data);
-            console.log(res.data);
-        }
-    }
-
-    const goToPrevPage = async () => {
-        const token = localStorage.getItem('token');
-
-        if (categories && categories["hydra:view"] && categories["hydra:view"]["hydra:previous"]) {
-            const res = await axiosInstance.get(categories["hydra:view"]["hydra:previous"],
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                }
-            );
-    
-            setCategories(res.data);
-            console.log(res.data);
-        }
-    }
-
-    const goToLastPage = async () => {
-        const token = localStorage.getItem('token');
-
-        if (categories && categories["hydra:view"] && categories["hydra:view"]["hydra:last"]) {
-            const res = await axiosInstance.get(categories["hydra:view"]["hydra:last"],
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                }
-            );
-    
-            setCategories(res.data);
-            console.log(res.data);
-        }
-    }
 
     return (
         <div className="mytable">
@@ -114,10 +45,7 @@ const CategoryList = () => {
                     {renderHelper(categories)}
                 </tbody>
             </table>
-            <button type="button" className="btn-inverse" onClick={goToFirstPage}>&lt;</button>
-            <button type="button" className="btn-inverse" onClick={goToPrevPage}>Précédent</button>
-            <button type="button" className="btn-inverse" onClick={goToNextPage}>Suivant</button>
-            <button type="button" className="btn-inverse" onClick={goToLastPage}>&gt;</button>
+            <Pagination  elements={categories} setElements={setCategories} token={token} />
         </div>
     )
 };
