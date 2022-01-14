@@ -8,6 +8,7 @@ import { HTTP_STATUS_CODE } from '../../../utils/utils';
 
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import '../../../assets/style/user.scss';
+import '../../../assets/style/table.scss';
 
 const UserList = () => {
     const token = localStorage.getItem('token');
@@ -67,15 +68,19 @@ const UserList = () => {
             </div>
             <h1>Liste des utilisateurs</h1>
             <table>
-                <tr>
-                    <th>Login</th>
-                    <th>Profile</th>
-                    <th>Date de création</th>
-                    <th>Status</th>
-                    <th>Changer Status</th>
-                    <th>Actions</th>
-                </tr>
-                {renderHelper()}
+                <thead className='table-header-inversed'>
+                    <tr>
+                        <th>Login</th>
+                        <th>Profile</th>
+                        <th>Date de création</th>
+                        <th>Status</th>
+                        <th>Changer Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {renderHelper()}
+                </tbody>
             </table>
         </div>
     );

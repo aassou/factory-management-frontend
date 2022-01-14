@@ -17,9 +17,9 @@ const App = () => {
 		<div>
 			<Navbar />
 			<div className="row mx-0  p-0">
-			<div className="bg-light p-0">
-				<SwitchLinks />
-			</div>
+				<div className="bg-light p-0">
+					<SwitchLinks />
+				</div>
 			</div>
 		</div>
 		) : (
@@ -30,7 +30,7 @@ const App = () => {
 			<div className="App col-lg-10 bg-light p-4">
 				<LinksBar />
 				<div className="bg-light">
-				<SwitchLinks />
+					<SwitchLinks />
 				</div>
 			</div>
 			</div>

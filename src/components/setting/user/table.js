@@ -4,11 +4,11 @@ import { putUser } from '../../../functions/UserApi';
 import ProfileForm from './ProfileForm';
 
 const TableBody = ({ user, deleteUserModalBox }) => {
+    const USER_STATUS = {'active': 1, 'inactive': 0};
     const token = localStorage.getItem('token');
     const [status, setStatus] = useState(user.status);
     const [profil, setProfil] = useState(user.profil);
     const [profilFormClass, setProfilFormClass] = useState('none');
-    const USER_STATUS = {'active': 1, 'inactive': 0};
 
     // update user profile in the server
     const updateProfile = (newprofil) => {
@@ -68,7 +68,6 @@ const TableBody = ({ user, deleteUserModalBox }) => {
         );
     };
 
-    // display Activer or Desactiver buttons based on user status (0 or 1)
     const showUserStatusButton = () => {
         const statusClass = classNames(
             {'bg-secondary bg-gradient': status === USER_STATUS.active},
@@ -92,7 +91,7 @@ const TableBody = ({ user, deleteUserModalBox }) => {
             <td>{showUserStatusButton()}</td>
             <td>
                 <button 
-                    onClick={() => { setProfilFormClass('profileForm') }} 
+                    onClick={() => { setProfilFormClass('modalbox') }} 
                     className="btn me-2 text-white bg-success"
                 >
                     <i className="fas fa-sync" />
@@ -108,6 +107,7 @@ const TableBody = ({ user, deleteUserModalBox }) => {
                     closeForm={closeForm}
                     oldprofile={profil}
                     updateProfile={updateProfile}
+                    name={user.username}
                 />
             </td>
         </tr>

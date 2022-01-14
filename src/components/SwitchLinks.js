@@ -31,10 +31,8 @@ import MonthHistory from './setting/MonthHistory';
 
 const SwitchLinks = () => (
     <Switch>
-        <Route path="/login" component={Login} />
-        <Route path="/" exact>
-            <Dashboard />
-        </Route>
+        <Route path="/login" exact component={props => <Login {...props} />} />
+        <Route path="/" exact component={props => <Dashboard {...props} />} />
         {/* Suppliers */}
         <Route path="/suppliers" exact component={SupplierList} />
         <Route path="/suppliers/:id/update" exact component={SupplierEdit} />

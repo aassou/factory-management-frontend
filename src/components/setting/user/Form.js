@@ -86,7 +86,7 @@ const Form = ({ user, deleteUser }) => {
             <td>{showUserStatusButton()}</td>
             <td>
                 <button 
-                    onClick={() => { setProfilFormClass('profileForm') }} 
+                    onClick={() => { setProfilFormClass('profileForm modal-content') }} 
                     className="btn me-2 text-white bg-success"
                 >
                     <i className="fas fa-sync" />

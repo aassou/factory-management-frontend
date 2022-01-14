@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
 import { getProviders } from '../../../functions/ProviderApi';
 import Card from './Card';
+
+import '../../../assets/style/table.scss';
 
 const ProvidersPage = () => {
   const [providers, setProviders] = useState(null);
@@ -36,7 +37,7 @@ const ProvidersPage = () => {
         </Link>
       </div>
       <table>
-        <thead>
+        <thead className='table-header-inversed'>
           <tr>
             <th>Nom</th>
             <th>Adresse</th>

@@ -5,6 +5,7 @@ import TableBody from "./table";
 import { getCustomers } from '../../functions/CustomerApi';
 import Pagination from "../pagination/Pagination";
 
+import '../../assets/style/table.scss';
 import '../../assets/style/buttons.scss';
 
 const CustomerList = () => {
@@ -30,12 +31,12 @@ const CustomerList = () => {
         <div className="mytable">
             <div className="text-end bg-light">
                 <Link className="btn bg-light-blue text-white m-4" to="/customers/add">
-                    Ajouter Un Client
+                    Ajouter Client
                 </Link>
             </div>
             <h1>Liste des Clients</h1>
             <table>
-                <thead>
+                <thead className="table-header-inversed">
                     <tr>
                         <th>N° Client</th>
                         <th>Nom</th>

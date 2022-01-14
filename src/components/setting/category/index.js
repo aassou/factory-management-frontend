@@ -5,6 +5,7 @@ import { getCategories } from '../../../functions/CategoryApi';
 import Pagination from "../../pagination/Pagination";
 
 import '../../../assets/style/buttons.scss';
+import '../../../assets/style/table.scss';
 
 const CategoryList = () => {
     const [categories, setCategories] = useState(null);
@@ -29,12 +30,12 @@ const CategoryList = () => {
         <div className="mytable">
             <div className="text-end bg-light">
                 <Link className="btn bg-light-blue text-white m-4" to="/settings/categories/add">
-                    Ajouter Une Catégorie
+                    Ajouter Catégorie
                 </Link>
             </div>
             <h1>Liste des Catégories</h1>
             <table>
-                <thead>
+                <thead className="table-header-inversed">
                     <tr>
                         <th>Nom</th>
                         <th>Image</th>

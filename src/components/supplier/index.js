@@ -5,6 +5,7 @@ import TableBody from "./table";
 import { getSuppliers } from '../../functions/SupplierApi';
 import Pagination from "../pagination/Pagination";
 
+import '../../assets/style/table.scss';
 import '../../assets/style/buttons.scss';
 
 const SupplierList = () => {
@@ -35,7 +36,7 @@ const SupplierList = () => {
             </div>
             <h1>Liste des Fournisseurs</h1>
             <table>
-                <thead>
+                <thead className="table-header-inversed">
                     <tr>
                         <th>N° Founisseur</th>
                         <th>Nom</th>
