@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import TableBody from "./table";
+import TableBody from "./Table";
 import { getCategories } from '../../../functions/CategoryApi';
 import Pagination from "../../pagination/Pagination";
 

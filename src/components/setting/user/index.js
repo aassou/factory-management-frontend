@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { confirmAlert } from 'react-confirm-alert';
-import { getUsers, deleteUser, getUser } from '../../../functions/UserApi';
-import TableBody from './table';
-import DeleteModalBox from '../../modals/DeleteModalBox';
+import { getUsers, getCurrentUser } from '../../../functions/UserApi';
+import TableBody from './Table';
 import { HTTP_STATUS_CODE } from '../../../utils/utils';
 
 import 'react-confirm-alert/src/react-confirm-alert.css';
@@ -12,49 +10,28 @@ import '../../../assets/style/table.scss';
 
 const UserList = () => {
     const token = localStorage.getItem('token');
-    const [users, setUsers] = useState(null);
     const [userList, setUserList] = useState([]);
-    const DELETE_MODALBOX_LABELS = {'confirm': 'Oui', 'cancel': 'Non'};
+    const [currentUser, setCurrentUser] = useState(null);
 
     useEffect(async () => {
-        const response = await getUsers(token);
-        setUsers(response.data);
+        const response1 = await getUsers(token);
+        const response2 = await getCurrentUser(token);
 
-        if (response.status === HTTP_STATUS_CODE.SUCESS.OK) {
-            setUserList(response.data["hydra:member"]);
+        if (response1.status === HTTP_STATUS_CODE.SUCESS.OK) {
+            setUserList(response1.data["hydra:member"]);
+        }
+
+        if (response2.status === HTTP_STATUS_CODE.SUCESS.OK) {
+            setCurrentUser(response2.data.user);
         }
     }, []);
 
-    const onClickDeleteUser = async (userId, token) => {
-        const response = await deleteUser(userId, token);
-        
-        response.status === HTTP_STATUS_CODE.SUCESS.NO_CONTENT 
-            && setUserList(userList.filter(user => user.id !== userId));
-    };
-
-    const deleteUserModalBox = (id, username) => {
-        confirmAlert({
-            title: "Confirmer la suppression de l'utilisateur",
-            message: `Êtes-vous sûr de vouloir supprimer l'utilisateur ${username}.`,
-            buttons: [
-                {
-                    label: DELETE_MODALBOX_LABELS.confirm,
-                    onClick: () => onClickDeleteUser(id, token)
-                },
-                {
-                    label: DELETE_MODALBOX_LABELS.cancel,
-                    onClick: () => {},
-                },
-            ],
-        });
-    };
-
     const renderHelper = () => {
-        return userList && userList.map((user) => (
+        return userList && userList.map(user => (
             <TableBody 
                 key={user.username} 
-                deleteUserModalBox={deleteUserModalBox} 
-                user={user} 
+                user={user}
+                currentUser={currentUser ? currentUser : null}
             />
         ));
     };

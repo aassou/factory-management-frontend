@@ -50,3 +50,9 @@ export const getUsers = (token) => axiosInstance.get(`/api/users`, {
 		Authorization: `Bearer ${token}`,
 	},
 });
+
+export const getCurrentUser = (token) => axiosInstance.get(`/api/user/current`, {
+	headers: {
+		Authorization: `Bearer ${token}`
+	}
+});

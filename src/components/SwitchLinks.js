@@ -7,10 +7,15 @@ import SupplierList from './supplier/index';
 import SupplierEdit from './supplier/edit';
 import SupplierAdd from './supplier/add';
 
-//customer
+// customer
 import CustomerList from './customer/index';
 import CustomerEdit from './customer/edit';
 import CustomerAdd from './customer/add';
+
+// product
+import ProductList from './product/index';
+import ProductEdit from './product/edit';
+import ProductAdd from './product/add';
 
 // setting
 import Settings from './setting/index';
@@ -41,6 +46,10 @@ const SwitchLinks = () => (
         <Route path="/customers" exact component={CustomerList} />
         <Route path="/customers/:id/update" exact component={CustomerEdit} />
         <Route path="/customers/add" exact component={CustomerAdd} />
+        {/* Products */}
+        <Route path="/products" exact component={ProductList} />
+        <Route path="/products/:id/update" exact component={ProductEdit} />
+        <Route path="/products/add" exact component={ProductAdd} />
         {/* settings */}
         <Route path="/settings" exact component={Settings} />
         {/* settings - category */}

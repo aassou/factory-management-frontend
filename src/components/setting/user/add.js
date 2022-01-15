@@ -6,10 +6,12 @@ const UserAdd = () => {
     const [passwordConfErrorClassName, setPasswordConfErrorClassName] = useState('');
     const [passwordErrorClassName, setPasswordErrorClassName] = useState('');
     const [loginErrorClassName, setLoginErrorClassName] = useState('');
+    
     // ? error messages
     const [passwordConfErrorMsg, setPasswordConfErrorMsg] = useState('');
     const [passwordErrorMsg, setPasswordErrorMsg] = useState('');
     const [loginErrorMsg, setLoginErrorMsg] = useState('');
+    
     // ? success msg
     const [successMsg, setSuccessMsg] = useState('');
 
@@ -34,16 +36,16 @@ const UserAdd = () => {
         setSuccessMsg('');
 
         if (!login) {
-			setLoginErrorMsg('login is rquired!');
+			setLoginErrorMsg('login obligatoire!');
 			setLoginErrorClassName('alert-danger');
         } else if (!password) {
-			setPasswordErrorMsg('password required');
+			setPasswordErrorMsg('Mot de passe obligatoire!');
 			setPasswordErrorClassName('alert-danger');
         } else if (!passwordConf) {
-			setPasswordConfErrorMsg('please confirm your password');
+			setPasswordConfErrorMsg('Veuillez confirmer votre mot de passe!');
 			setPasswordConfErrorClassName('alert-danger');
         } else if (password !== passwordConf) {
-			setPasswordConfErrorMsg("passwords dosn't match");
+			setPasswordConfErrorMsg("Les mots de passe doivent être identiques!");
 			setPasswordConfErrorClassName('alert-danger');
         } else if (!passwordConfErrorMsg && !passwordErrorMsg && !loginErrorMsg) {
 			const mystatus = status ? 1 : 0;
@@ -84,7 +86,7 @@ const UserAdd = () => {
 
     return (
         <div className="add-user-form bg-white">
-            <h1 className="text-center p-3">Register utilisateurs</h1>
+            <h1 className="text-center p-3">Ajouter Utilisateur</h1>
             {showSuccess(successMsg)}
             <form onSubmit={handlesubmit} className="bg-light border border-lightblue">
                 <div className="p-5">
@@ -128,7 +130,7 @@ const UserAdd = () => {
                         {showError(passwordErrorMsg)}
                     </div>
                     <div className="mb-3">
-                        <label className="form-label">Confirmez le mot de passe</label>
+                        <label className="form-label">Retaper mot de passe</label>
                         <div className="input-wrapper">
                             <input value={passwordConf} onChange={(e) => { setPasswordConf(e.target.value); }} className={`form-control ${passwordConfErrorClassName}`} type="password" />
                             <i className={`fas fa-check ${passwordConfErrorClassName}`} />

@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import "../../../assets/style/modalbox.scss"
+import "../../../../assets/style/modalbox.scss"
 
-const ProfileForm = ({ formClass, oldprofile, updateProfile, closeForm, name}) => {
+const UpdateModalBox = ({ formClass, oldprofile, updateProfile, closeUpdateModalBox, name }) => {
     const [selectValue, setSelectValue] = useState(oldprofile);
 
     return (
@@ -10,7 +10,7 @@ const ProfileForm = ({ formClass, oldprofile, updateProfile, closeForm, name}) =
             <div className="modalbox-content">
                 <div className="modalbox-header">
                     <h4>Modifier Profil Utilisateur</h4>
-                    <button onClick={() => { closeForm() }} className="close">
+                    <button onClick={() => { closeUpdateModalBox() }} className="close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
@@ -20,7 +20,7 @@ const ProfileForm = ({ formClass, oldprofile, updateProfile, closeForm, name}) =
                         <label className="d-block py-2 pr-10 fw-500">Profil</label>
                         <select
                             value={selectValue}
-                            onChange={(e) => { setSelectValue(e.target.value); }}
+                            onChange={e => setSelectValue(e.target.value) }
                             className="form-select w-50"
                         >
                             <option value="Manager">Manager</option>
@@ -31,10 +31,10 @@ const ProfileForm = ({ formClass, oldprofile, updateProfile, closeForm, name}) =
                     </div>
                 </div>
                 <div className="modalbox-footer">
-                    <button type="button" className="btn btn-cancel" onClick={() => closeForm()}>
+                    <button type="button" className="btn btn-cancel" onClick={() => closeUpdateModalBox()}>
                         Non
                     </button>
-                    <button type="button" className="btn btn-danger" onClick={(e) => updateProfile(selectValue)}>
+                    <button type="button" className="btn btn-danger" onClick={() => updateProfile(selectValue)}>
                         Oui
                     </button>
                 </div>
@@ -43,4 +43,4 @@ const ProfileForm = ({ formClass, oldprofile, updateProfile, closeForm, name}) =
     );
 }
 
-export default ProfileForm;
+export default UpdateModalBox;

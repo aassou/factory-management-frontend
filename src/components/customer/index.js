@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axiosInstance from "../../axios";
-import TableBody from "./table";
+import TableBody from "./Table";
 import { getCustomers } from '../../functions/CustomerApi';
 import Pagination from "../pagination/Pagination";
 
