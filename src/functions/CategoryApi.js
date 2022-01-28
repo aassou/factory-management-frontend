@@ -48,3 +48,11 @@ export const deleteCategory = (id, token) => axiosInstance.delete(`/api/categori
 		}
 	}
 );
+
+export const searchCategory = (query, token) => axiosInstance.get(`/api/categories?page=1&name=${query}`,
+	{
+		headers: {
+			Authorization: `Bearer ${token}`
+		}
+	}
+);

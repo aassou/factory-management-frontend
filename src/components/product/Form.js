@@ -1,10 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import axiosInstance from '../../axios';
+import { searchCategory } from '../../functions/CategoryApi';
+
 import '../../assets/style/product.scss';
 import '../../assets/style/general.scss';
 
 const Form = (props) => {
+    const token = localStorage.getItem('token');
+
     // ?errors
+    const [categoryErrorClassName, setCategoryErrorClassName] = useState('');
     const [referenceErrorClassName, setReferenceErrorClassName] = useState('');
     const [lengthErrorClassName, setLengthErrorClassName] = useState('');
     const [heightErrorClassName, setHeightErrorClassName] = useState('');
@@ -15,6 +21,7 @@ const Form = (props) => {
     const [imageErrorClassName, setImageErrorClassName] = useState('');
   
     // ? error messages
+    const [categoryErrorMsg, setCategoryErrorMsg] = useState('');
     const [referenceErrorMsg, setReferenceErrorMsg] = useState('');
     const [lengthErrorMsg, setLengthErrorMsg] = useState('');
     const [heightErrorMsg, setHeightErrorMsg] = useState('');
@@ -28,6 +35,7 @@ const Form = (props) => {
     const [successMsg, setSuccessMsg] = useState('');
 
     // ? fields
+    const [category, setCategory] = useState('');
     const [reference, setReference] = useState('');
     const [length, setLength] = useState('');
     const [height, setHeight] = useState('');
@@ -40,6 +48,7 @@ const Form = (props) => {
     useEffect(() => {
         if (props.product) {
             const { product } = props;
+            setCategory(product.category);
             setReference(product.reference);
             setLength(product.length);
             setHeight(product.height);
@@ -51,10 +60,19 @@ const Form = (props) => {
         }
     }, [props.product]);
 
+    const onChange = async (text) => {
+        const response = await searchCategory(text, token);
+
+        console.log(response);
+        setCategory(text);
+    }
+
     const handlesubmit = (e) => {
         e.preventDefault();
 
         setSuccessMsg('');
+        setCategoryErrorMsg('');
+        setCategoryErrorClassName('');
         setReferenceErrorMsg('');
         setReferenceErrorClassName('');
         setLengthErrorMsg('');
@@ -78,6 +96,7 @@ const Form = (props) => {
         }
 
         if (
+            category,
             reference,
             length,
             height,
@@ -90,6 +109,7 @@ const Form = (props) => {
             const id = props.product ? props.product.id : null;
             const product = {
                 id,
+                category,
                 reference,
                 length: parseFloat(length),
                 height: parseFloat(height),
@@ -130,6 +150,22 @@ const Form = (props) => {
             {showSuccess(successMsg)}
             <form onSubmit={handlesubmit} className="bg-light border border-lightblue">
                 <div className="p-5">
+                    <div className="grid-four">
+                        <div className="mb-3 px-2">
+                            <label className="form-label">
+                                Catégorie <span className='text-danger'>*</span>
+                            </label>
+                            <div className="input-wrapper">
+                                <input
+                                    onChange={(e) => { onChange(e.target.value); }}
+                                    value={category}
+                                    className={`form-control ${categoryErrorClassName}`}
+                                    type="text"
+                                />
+                            </div>
+                            {showError(categoryErrorMsg)}
+                        </div>
+                    </div>
                 {/* block 1 */}
                     <div className="grid-four">
                         <div className="mb-3 px-2">
