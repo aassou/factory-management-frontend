@@ -1,0 +1,43 @@
+@import './colors.scss';
+
+.mytable {
+    background-color: white;
+    table {
+        width: 100%;
+    }
+    tr:nth-child(even) {
+        background-color: whitesmoke;
+    }
+
+    th,td {
+        border-right: 2px solid whitesmoke;
+        padding:5px;
+    }
+
+}
+
+.label-main {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 8px 5px;
+}
+
+.label.label-lg {
+    padding: 8px 21px;
+}
+
+.label {
+    font-size: 100%;
+    padding: 4px 7px;
+    margin-right: 5px;
+    font-weight: 400;
+    color: #fff !important;
+}
+
+.label-primary {
+    background: #01a9ac;
+}
+
+.label-inverse {
+    background: #404E67;
+}

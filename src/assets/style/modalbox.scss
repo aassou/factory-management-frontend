@@ -1,0 +1,85 @@
+.modalbox{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(128, 128, 128, 0.9);
+
+    .modalbox-content {
+        background-color: #fff;
+        max-width: 800px;
+        margin: 10% auto;
+        border-radius: .5rem;
+    
+        .form {
+            background-color: white;
+            position: relative;
+            .form-select:focus {
+                    outline: none;
+                    box-shadow: none;
+            }
+        }
+    
+        .modalbox-header {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            padding: 15px;
+            border-bottom: 1px solid #e9ecef;
+
+            button{
+                &.close {
+                    padding: 0;
+                    background: 0 0;
+                    border: 0;
+                    -webkit-appearance: none;
+                    margin-top: 7px;
+                    margin-bottom: 0;
+                }
+            }
+
+            .close {
+                float: right;
+                font-weight: 700;
+                line-height: 1;
+                color: #000;
+                text-shadow: 0 1px 0 #fff;
+                cursor: pointer;
+
+            }
+    
+            .modalbox-title {
+                margin-bottom: 0;
+                line-height: 1.5;
+            }
+        }
+    
+        .modalbox-body {
+            position: relative;
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+            padding: 15px;
+        }
+    
+        .modalbox-footer {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            -ms-flex-pack: end;
+            justify-content: flex-end;
+            padding: 15px;
+            border-top: 1px solid #e9ecef;
+
+            .btn-cancel {
+                background-color: #EFEFEF !important;
+                margin-right: 10px;
+            }
+        }
+    }
+}

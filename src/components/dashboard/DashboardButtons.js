@@ -3,7 +3,7 @@ import DashboardButton from './DashboardButton';
 const DashboardButtons = () => {
   const tiles = [
     {
-      name: 'Produits', 
+      name: 'Produits',
       link: 'products', 
       color: 'navy-card', 
       icon: 'far fa-barcode', 
@@ -18,29 +18,36 @@ const DashboardButtons = () => {
     },
     {
       name: 'Fournisseurs', 
-      link: 'providers', 
+      link: 'suppliers', 
       color: 'aqua-card', 
       icon: 'fa fa-truck', 
       description: 'Gestion, vérification et stockage des commandes internes.',
     },
     {
+      name: 'Clients', 
+      link: 'customers', 
+      color: 'bg-c-blue', 
+      icon: 'fa fa-users', 
+      description: 'Classement des clients selon respect des réglements.',
+    },
+    {
       name: 'Stock', 
       link: 'warehouse', 
-      color: 'bg-c-blue', 
+      color: 'teal-card', 
       icon: 'fa fa-cubes', 
       description: 'Gestion et suivi des produits en stock.',
     },
     {
       name: 'Découpage', 
       link: 'cutting', 
-      color: 'teal-card', 
+      color: 'lime-card', 
       icon: 'fa fa-cut', 
       description: 'Gestion de Plan, Design, Découpage et Brossage.',
     },
     {
       name: 'Peinture', 
       link: 'painting', 
-      color: 'lime-card', 
+      color: 'green-card', 
       icon: 'fa fa-paint-brush', 
       description: 'Rayonnage Entrée, Traitement surface, Peinture Epoxy et Four Epoxy.',
     },
@@ -54,16 +61,9 @@ const DashboardButtons = () => {
     {
       name: 'Employées', 
       link: 'employees', 
-      color: 'green-card', 
-      icon: 'fa fa-users', 
-      description: 'Gestion des employés de la société.',
-    },
-    {
-      name: 'Classement Client', 
-      link: 'clients-ranking', 
       color: 'bg-instagram', 
-      icon: 'fa fa-star', 
-      description: 'Classement des clients selon respect des limites des réglements.',
+      icon: 'fa fa-user', 
+      description: 'Gestion des employés de la société.',
     },
     {
       name: 'États', 

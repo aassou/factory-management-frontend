@@ -1,9 +1,9 @@
 import axiosInstance from '../axios';
 
 export const addProvider = (provider, token) => axiosInstance.post(`/api/providers/create`, provider, {
-headers: {
+  headers: {
     Authorization: `Bearer ${token}`,
-},
+  },
 });
 
 export const updateProvider = (provider, token) => axiosInstance.patch(`/api/providers/${provider.id}`, 

@@ -4,9 +4,7 @@ import classNames from 'classnames';
 import '../../assets/style/cards.scss';
 
 const DashboardButton = (props) => {
-  const {
-    title, subinfo, cardText, cardClass, iconClass, link,
-  } = props;
+  const {title, subinfo, cardText, cardClass, iconClass, link} = props;
   const linkCardClassName = classNames(cardClass, 'linkcard');
   const iconClassName = classNames(iconClass, 'card-icon');
 
