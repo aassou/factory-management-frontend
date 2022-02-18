@@ -5,7 +5,7 @@ import UpdateModalBox from './modals/UpdateModalBox';
 import DeleteModalBox from './modals/DeleteModalBox';
 import { HTTP_STATUS_CODE } from '../../../utils/utils';
 
-const TableBody = ({ user, currentUser }) => {
+const TableBody = ({ user, currentUser, userList, setUserList }) => {
     const USER_STATUS = {'active': 1, 'inactive': 0};
     const token = localStorage.getItem('token');
     const [status, setStatus] = useState(user.status);

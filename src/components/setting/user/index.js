@@ -32,6 +32,8 @@ const UserList = () => {
                 key={user.username} 
                 user={user}
                 currentUser={currentUser ? currentUser : null}
+                userList={userList}
+                setUserList={setUserList}
             />
         ));
     };
