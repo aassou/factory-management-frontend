@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import "../../../../assets/style/modalbox.scss"
 
 const DeleteModalBox = ({ formClass, closeDeleteModalBox, onClickDeleteUser, name, id, token }) => {

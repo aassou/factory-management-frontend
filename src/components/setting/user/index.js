@@ -28,7 +28,7 @@ const UserList = () => {
 
     const renderHelper = () => {
         return userList && userList.map(user => (
-            <TableBody 
+            <TableBody
                 key={user.username} 
                 user={user}
                 currentUser={currentUser ? currentUser : null}
