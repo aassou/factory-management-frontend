@@ -1,8 +1,6 @@
-import { useState } from "react";
-
 import "../../../../assets/style/modalbox.scss"
 
-const DeleteModalBox = ({ formClass, removeUser, closeDeleteModalBox, name, id, token }) => {
+const DeleteModalBox = ({ formClass, closeDeleteModalBox, onClickDeleteUser, name, id, token }) => {
 
     return (
         <div className={formClass}>
@@ -20,7 +18,7 @@ const DeleteModalBox = ({ formClass, removeUser, closeDeleteModalBox, name, id, 
                     <button type="button" className="btn btn-cancel" onClick={() => closeDeleteModalBox()}>
                         Non
                     </button>
-                    <button type="button" className="btn btn-danger" onClick={() => removeUser(id, token)}>
+                    <button type="button" className="btn btn-danger" onClick={() => onClickDeleteUser(id, token)}>
                         Oui
                     </button>
                 </div>
