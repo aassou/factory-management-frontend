@@ -28,7 +28,6 @@ class LoginComponent extends Component {
 
 	myLogin = (user) => {
 		console.log(user);
-		console.log(res);
 		login(user).then((res) => {
 			console.log(res);
 			this.setState({ credentialError: '' });
