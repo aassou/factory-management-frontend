@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-    baseURL: `http://127.0.0.1:81`
+    baseURL: process.env.FACTORY_MANAGEMENT_API_URI || `http://localhost:8081`
 });
 
 export default axiosInstance;
